@@ -31,8 +31,8 @@ class ExchangeAdapter implements ExchangePort {
         PlnExchangeValue panValueForTargetCurrency = exchangePlnRepo.findPlnExchangeValue(targetCurrency);
 
         BigDecimal exchangeRatio = plnValueForAmountCurrency.getExchangeRatio()
-                .divide(panValueForTargetCurrency.getExchangeRatio()
-                        , RoundingMode.HALF_DOWN);
+                .divide(panValueForTargetCurrency.getExchangeRatio(),
+                       3 , RoundingMode.HALF_DOWN);
 
         BigDecimal exchangedAmount = exchangeRequest.getAmount().multiply(exchangeRatio);
 
