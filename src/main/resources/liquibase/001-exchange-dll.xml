@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="szachnowicz" id="dll for exchange">
+
+        <sql>CREATE SEQUENCE hibernate_sequence START 1891;</sql>
+
+
+        <createTable tableName="pln_exchange">
+            <column name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="currency_code" type="VARCHAR(3)"/>
+            <column name="exchange_ratio" type="DECIMAL(10, 2)"/>
+            <column name="exchange_date" type="TIME WITH TIME ZONE"/>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
