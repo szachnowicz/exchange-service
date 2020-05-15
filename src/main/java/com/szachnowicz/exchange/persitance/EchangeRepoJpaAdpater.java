@@ -22,6 +22,7 @@ class EchangeRepoJpaAdpater implements ExchangePlnRepo {
     private final ExchangePlnJpaRepo exchangePlnJpaRepo;
 
     @Override
+    @Transactional
     public PlnExchangeValue findPlnExchangeValue(CurrencyCode currencyCode) {
 
 

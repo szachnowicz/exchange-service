@@ -26,12 +26,12 @@ class ExchangeAdapter implements ExchangePort {
 
         CurrencyCode targetCurrency = exchangeRequest.getTargetCurrency();
 
-        PlnExchangeValue panValueForAmountCurrency = exchangePlnRepo.findPlnExchangeValue(amountCurrency);
+        PlnExchangeValue plnValueForAmountCurrency = exchangePlnRepo.findPlnExchangeValue(amountCurrency);
 
-        PlnExchangeValue plnValueForTargetCurrecy = exchangePlnRepo.findPlnExchangeValue(targetCurrency);
+        PlnExchangeValue panValueForTargetCurrency = exchangePlnRepo.findPlnExchangeValue(targetCurrency);
 
-        BigDecimal exchangeRatio = panValueForAmountCurrency.getExchangeRatio()
-                .divide(plnValueForTargetCurrecy.getExchangeRatio()
+        BigDecimal exchangeRatio = plnValueForAmountCurrency.getExchangeRatio()
+                .divide(panValueForTargetCurrency.getExchangeRatio()
                         , RoundingMode.HALF_DOWN);
 
         BigDecimal exchangedAmount = exchangeRequest.getAmount().multiply(exchangeRatio);

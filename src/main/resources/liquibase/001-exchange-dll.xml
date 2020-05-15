@@ -14,9 +14,9 @@
             <column name="id" type="INT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="currency_code" type="VARCHAR(3)"/>
+            <column name="currency_code" type="VARCHAR(5)"/>
             <column name="exchange_ratio" type="DECIMAL(10, 2)"/>
-            <column name="exchange_date" type="TIME WITH TIME ZONE"/>
+            <column name="exchange_date" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
 

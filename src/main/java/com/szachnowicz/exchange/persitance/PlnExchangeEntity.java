@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ class PlnExchangeEntity {
     @Id
     @GeneratedValue
     protected Long id;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private CurrencyCode currencyCode;
     private BigDecimal exchangeRatio;
     private ZonedDateTime exchangeDate;
