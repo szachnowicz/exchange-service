@@ -1,9 +1,9 @@
-package com.szachnowicz.exchange.domian;
+package com.szachnowicz.exchange.domian.exchange;
 
 import com.szachnowicz.exchange.dto.ExchangeRequest;
 import com.szachnowicz.exchange.dto.ExchangedValueDto;
 import com.szachnowicz.exchange.dto.PlnExchangeValue;
-import com.szachnowicz.exchange.persitance.ExchangePlnRepo;
+import com.szachnowicz.exchange.persitance.exchange.ExchangePlnRepo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -66,7 +66,7 @@ class ExchangeAdapterTest {
 
         ExchangedValueDto exchangedValueDto = exchangeAdapter.exchangeCurrency(exchangeRequest);
 
-        BigDecimal exchangeRatio = BigDecimal.valueOf(4.5552).divide(BigDecimal.ONE, RoundingMode.HALF_DOWN);
+        BigDecimal exchangeRatio = BigDecimal.valueOf(4.5552).divide(BigDecimal.ONE,3, RoundingMode.HALF_DOWN);
 
         assertEquals(exchangedValueDto.getAmount(), BigDecimal.valueOf(100).multiply(exchangeRatio));
         assertEquals(exchangedValueDto.getAmountCurrency(), CurrencyCode.PLN);
@@ -86,12 +86,12 @@ class ExchangeAdapterTest {
 
         ExchangedValueDto exchangedValueDto = exchangeAdapter.exchangeCurrency(exchangeRequest);
 
-        BigDecimal exchangeRatio = BigDecimal.valueOf(5.00).divide(BigDecimal.ONE, RoundingMode.HALF_DOWN);
+        BigDecimal exchangeRatio = BigDecimal.valueOf(5.00).divide(BigDecimal.ONE,3, RoundingMode.HALF_DOWN);
 
         assertEquals(exchangedValueDto.getAmount(), BigDecimal.valueOf(100).multiply(exchangeRatio));
 
         assertEquals(exchangedValueDto.getAmountCurrency(), CurrencyCode.PLN);
-        assertEquals(exchangedValueDto.getExchangeRatio(), BigDecimal.valueOf(5.00));
+        assertEquals(exchangedValueDto.getExchangeRatio(), new BigDecimal("5.000"));
 
 
     }
@@ -108,7 +108,7 @@ class ExchangeAdapterTest {
 
         ExchangedValueDto exchangedValueDto = exchangeAdapter.exchangeCurrency(exchangeRequest);
 
-        BigDecimal exchangeRatio = BigDecimal.valueOf(5.00).divide(BigDecimal.valueOf(4.5552), RoundingMode.HALF_DOWN);
+        BigDecimal exchangeRatio = BigDecimal.valueOf(5.00).divide(BigDecimal.valueOf(4.5552),3, RoundingMode.HALF_DOWN);
 
         assertEquals(exchangedValueDto.getAmount(), BigDecimal.valueOf(100).multiply(exchangeRatio));
         assertEquals(exchangedValueDto.getAmountCurrency(), CurrencyCode.USD);
@@ -128,7 +128,7 @@ class ExchangeAdapterTest {
 
         ExchangedValueDto exchangedValueDto = exchangeAdapter.exchangeCurrency(exchangeRequest);
 
-        BigDecimal exchangeRatio = BigDecimal.valueOf(4.5552).divide(BigDecimal.valueOf(5.00), RoundingMode.HALF_DOWN);
+        BigDecimal exchangeRatio = BigDecimal.valueOf(4.5552).divide(BigDecimal.valueOf(5.00),3, RoundingMode.HALF_DOWN);
 
         assertEquals(exchangedValueDto.getAmount(), BigDecimal.valueOf(100).multiply(exchangeRatio));
         assertEquals(exchangedValueDto.getAmountCurrency(), CurrencyCode.GBP);

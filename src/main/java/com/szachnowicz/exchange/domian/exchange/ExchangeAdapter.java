@@ -1,9 +1,9 @@
-package com.szachnowicz.exchange.domian;
+package com.szachnowicz.exchange.domian.exchange;
 
 import com.szachnowicz.exchange.dto.ExchangeRequest;
 import com.szachnowicz.exchange.dto.ExchangedValueDto;
 import com.szachnowicz.exchange.dto.PlnExchangeValue;
-import com.szachnowicz.exchange.persitance.ExchangePlnRepo;
+import com.szachnowicz.exchange.persitance.exchange.ExchangePlnRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

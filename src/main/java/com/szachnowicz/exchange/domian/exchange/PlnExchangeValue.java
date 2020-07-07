@@ -1,4 +1,4 @@
-package com.szachnowicz.exchange.domian;
+package com.szachnowicz.exchange.domian.exchange;
 
 import lombok.Builder;
 import lombok.Getter;

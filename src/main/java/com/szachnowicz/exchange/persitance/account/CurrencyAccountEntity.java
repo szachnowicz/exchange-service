@@ -1,10 +1,10 @@
-package com.szachnowicz.exchange.persitance;
+package com.szachnowicz.exchange.persitance.account;
 
-import com.szachnowicz.exchange.domian.CurrencyCode;
-import lombok.AllArgsConstructor;
+import com.szachnowicz.exchange.domian.exchange.CurrencyCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Version;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,20 +12,21 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 
-@Entity(name = "pln_exchange")
-@Getter
+@Entity(name = "currency_account")
 @Setter
+@Getter
 @NoArgsConstructor
-@AllArgsConstructor
-class PlnExchangeEntity {
-
+class CurrencyAccountEntity {
     @Id
     @GeneratedValue
-    protected Long id;
+    private Long id;
+    private Long userId;
+    private String accountNumber;
+    private BigDecimal balance;
     @Enumerated(EnumType.STRING)
     private CurrencyCode currencyCode;
-    private BigDecimal exchangeRatio;
-    private ZonedDateTime exchangeDate;
+    @Version
+    private int version;
+
 }

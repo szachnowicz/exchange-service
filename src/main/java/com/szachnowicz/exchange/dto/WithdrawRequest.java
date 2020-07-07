@@ -14,8 +14,9 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExchangeRequest {
+public class WithdrawRequest {
+    private String pesel;
     private BigDecimal amount;
-    private CurrencyCode amountCurrency;
-    private CurrencyCode targetCurrency;
+    private CurrencyCode currencyCode;
+
 }

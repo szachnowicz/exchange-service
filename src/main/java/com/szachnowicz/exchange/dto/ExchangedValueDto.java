@@ -1,6 +1,6 @@
 package com.szachnowicz.exchange.dto;
 
-import com.szachnowicz.exchange.domian.CurrencyCode;
+import com.szachnowicz.exchange.domian.exchange.CurrencyCode;
 import lombok.Builder;
 import lombok.Getter;
 
