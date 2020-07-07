@@ -5,5 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="classpath:/liquibase/001-exchange-dll.xml"/>
+    <include file="classpath:/liquibase/002-user_dll.xml"/>
+    <include file="classpath:/liquibase/003-currency_account_ddl.xml"/>
 
 </databaseChangeLog>

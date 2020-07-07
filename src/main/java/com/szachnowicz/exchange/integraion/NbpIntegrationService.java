@@ -1,10 +1,9 @@
 package com.szachnowicz.exchange.integraion;
 
-import com.szachnowicz.exchange.domian.CurrencyCode;
+import com.szachnowicz.exchange.domian.exchange.CurrencyCode;
 import com.szachnowicz.exchange.dto.PlnExchangeValue;
-import com.szachnowicz.exchange.persitance.ExchangePlnRepo;
+import com.szachnowicz.exchange.persitance.exchange.ExchangePlnRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.http.HttpStatus;
@@ -15,19 +14,19 @@ import org.springframework.web.client.RestTemplate;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class NbpIntegrationService implements ExchangeCurrencyProvider {
+class NbpIntegrationService implements ExchangeCurrencyProvider {
 
     private final String URL = "https://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
-
     private final ExchangePlnRepo exchangePlnRepo;
+
+
 
 
     @Override
@@ -37,10 +36,11 @@ public class NbpIntegrationService implements ExchangeCurrencyProvider {
     }
 
 
-    public List<PlnExchangeValue> parseResponse() {
-         final RestTemplate restTemplate = new RestTemplate();
+    private List<PlnExchangeValue> parseResponse() {
+        final RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<String> forEntity = restTemplate.getForEntity(URL, String.class);
+
 
         if (forEntity.getStatusCode() == HttpStatus.OK) {
             JsonParser springParser = JsonParserFactory.getJsonParser();

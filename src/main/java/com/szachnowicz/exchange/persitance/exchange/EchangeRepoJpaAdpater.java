@@ -1,12 +1,11 @@
-package com.szachnowicz.exchange.persitance;
+package com.szachnowicz.exchange.persitance.exchange;
 
 
-import com.szachnowicz.exchange.domian.CurrencyCode;
+import com.szachnowicz.exchange.domian.exchange.CurrencyCode;
 import com.szachnowicz.exchange.dto.PlnExchangeValue;
 import com.szachnowicz.exchange.dto.error.BusinessErrorCodes;
 import com.szachnowicz.exchange.dto.error.BusinessException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 class EchangeRepoJpaAdpater implements ExchangePlnRepo {
 
-    @Autowired
+
     private final ExchangePlnJpaRepo exchangePlnJpaRepo;
 
     @Override
@@ -35,7 +34,7 @@ class EchangeRepoJpaAdpater implements ExchangePlnRepo {
 
         PlnExchangeEntity byCurrency =
                 exchangePlnJpaRepo.findByCurrencyCode(currencyCode)
-                        .orElseThrow(() -> new BusinessException(BusinessErrorCodes.CURRECY_NOT_FOUND));
+                        .orElseThrow(() -> new BusinessException(BusinessErrorCodes.CURRENCY_NOT_FOUND));
 
         return PlnExchangeValue
                 .builder()

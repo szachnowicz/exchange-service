@@ -1,6 +1,6 @@
-package com.szachnowicz.exchange.persitance;
+package com.szachnowicz.exchange.persitance.exchange;
 
-import com.szachnowicz.exchange.domian.CurrencyCode;
+import com.szachnowicz.exchange.domian.exchange.CurrencyCode;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
